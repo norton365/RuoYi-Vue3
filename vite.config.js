@@ -21,11 +21,12 @@ export default defineConfig(({ mode, command }) => {
         '@': path.resolve(__dirname, './src')
       },
       // https://cn.vitejs.dev/config/#resolve-extensions
+      //导入时想要省略的扩展名列表。注意，不 建议忽略自定义导入类型的扩展名（例如：.vue），因为它会影响 IDE 和类型支持。
       extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue']
     },
     // vite 相关配置
     server: {
-      port: 80,
+      port: 83,
       host: true,
       open: true,
       proxy: {
@@ -42,6 +43,10 @@ export default defineConfig(({ mode, command }) => {
       postcss: {
         plugins: [
           {
+            //postcss给含有中文的scss 加了个@charset:UTF-8;
+            // element-plus的index.css文件包含@charset:UTF-8。
+            // 在组合css时@charset的位置并不是在头部(或最前面)，同时本地scss如果有中文也会自动添加@charset:UTF-8。因此build时就会warning提示错误了。
+            // 删除库里的@charset:UTF-8
             postcssPlugin: 'internal:charset-removal',
             AtRule: {
               charset: (atRule) => {
