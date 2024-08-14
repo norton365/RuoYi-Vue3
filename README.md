@@ -17,6 +17,20 @@
 * 阿里云折扣场：[点我进入](http://aly.ruoyi.vip)，腾讯云秒杀场：[点我进入](http://txy.ruoyi.vip)&nbsp;&nbsp;
 * 阿里云优惠券：[点我领取](https://www.aliyun.com/minisite/goods?userCode=brki8iof&share_source=copy_link)，腾讯云优惠券：[点我领取](https://cloud.tencent.com/redirect.php?redirect=1025&cps_key=198c8df2ed259157187173bc7f4f32fd&from=console)&nbsp;&nbsp;
 
+## 关联官方分支
+```bash
+# 增加源分支地址到你项目远程分支列表中(此处是关键)，先得将原来的仓库指定为upstream，命令为：
+git remote add upstream https://github.com/yangzongzhuan/RuoYi-Vue3.git
+# 此处可使用git remote -v查看远程分支列表
+git remote -v
+# 抓取原仓库的更新
+git fetch upstream
+# 合并两个版本的代码
+git merge upstream/master
+# 将合并后的代码push到自己的分支上去
+git push origin master
+```
+
 ## 前端运行
 
 ```bash
